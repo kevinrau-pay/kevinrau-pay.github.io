@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Beginning of Forever</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    scroll-behavior:smooth;
+    overflow-x:hidden;
+    position:relative;
+    background:linear-gradient(180deg,#1e2a44,#243b55,#2c5364);
+}
+
+/* GIF BACKGROUND */
+.gif-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-image:url("https://i.gifer.com/EPts.gif");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    z-index:-4;
+}
+
+.gif-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.45);
+    z-index:-3;
+}
+
+/* STARS */
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.stars span{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    opacity:0.8;
+    animation:twinkle 4s infinite alternate;
+}
+
+.stars span:nth-child(1){ top:20%; left:15%; animation-delay:1s;}
+.stars span:nth-child(2){ top:30%; left:40%; animation-delay:2s;}
+.stars span:nth-child(3){ top:15%; left:70%; animation-delay:3s;}
+.stars span:nth-child(4){ top:45%; left:85%; animation-delay:1.5s;}
+.stars span:nth-child(5){ top:60%; left:25%; animation-delay:2.5s;}
+.stars span:nth-child(6){ top:70%; left:60%; animation-delay:0.5s;}
+
+@keyframes twinkle{
+    from{ opacity:0.3; transform:scale(1);}
+    to{ opacity:1; transform:scale(1.6);}
+}
+
+/* SECTION */
+.section{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(20px, 5vw, 80px);
+    min-height:100vh;
+    padding:clamp(60px, 8vw, 120px) 8%;
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s ease;
+}
+
+.section.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* IMAGE */
+.image-box{
+    flex:1;
+    max-width:480px;
+    padding:15px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+.image-box img{
+    width:100%;
+    border-radius:15px;
+    display:block;
+}
+
+/* TEXT */
+.text-box{
+    flex:1;
+    max-width:480px;
+    color:#f0f4ff;
+}
+
+.text-box h1{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(28px, 4vw, 48px);
+    margin-bottom:18px;
+}
+
+.text-box p{
+    color:#d0d8ff;
+    font-style:italic;
+    line-height:1.7;
+    font-size:clamp(14px, 1.5vw, 17px);
+}
+
+.line{
+    width:70px;
+    height:3px;
+    background:linear-gradient(to right,#ffffff,#cfd8ff);
+    margin-top:20px;
+    border-radius:3px;
+}
+
+@media(max-width:900px){
+    .section{
+        flex-direction:column;
+        text-align:center;
+        gap:30px;
+        min-height:auto;
+        padding:80px 6%;
+    }
+
+    .line{
+        margin:20px auto 0 auto;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="gif-bg"></div>
+<div class="gif-overlay"></div>
+
+<div class="stars">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+</div>
+
+<!-- 🎵 BACKGROUND MUSIC -->
+<audio id="bgMusic" autoplay muted loop playsinline>
+    <source src="songlove.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SECTION 1 -->
+<div class="section">
+    <div class="image-box">
+        <img src="foto1.jpg">
+    </div>
+    <div class="text-box">
+        <h1>The Beginning of Forever</h1>
+        <p>"The moment our eyes met, I knew you were the serendipity I had spent a lifetime waiting for."</p>
+        <div class="line"></div>
+    </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+    <div class="image-box">
+        <img src="foto2.jpg">
+    </div>
+    <div class="text-box">
+        <h1>Every Moment</h1>
+        <p>"With you, even silence feels meaningful and every second becomes a memory."</p>
+        <div class="line"></div>
+    </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+    <div class="image-box">
+        <img src="foto3.jpg">
+    </div>
+    <div class="text-box">
+        <h1>Forever Us</h1>
+        <p>"No matter where life takes us, my heart will always find its way back to you."</p>
+        <div class="line"></div>
+    </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section">
+    <div class="image-box">
+        <img src="foto4.jpg">
+    </div>
+    <div class="text-box">
+        <h1>My Always</h1>
+        <p>"You are my today, my tomorrow, and all the days after."</p>
+        <div class="line"></div>
+    </div>
+</div>
+
+<script>
+// ================= SCROLL REVEAL (TIDAK DIUBAH) =================
+const sections = document.querySelectorAll('.section');
+
+function reveal(){
+    const trigger = window.innerHeight * 0.85;
+    sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if(top < trigger){
+            section.classList.add('show');
+        }
+    });
+}
+
+window.addEventListener('scroll', reveal);
+reveal();
+
+// ================= AUTOPLAY SYSTEM (TIDAK DIUBAH) =================
+const music = document.getElementById("bgMusic");
+
+window.addEventListener("load", () => {
+
+    // 🔥 Sinkron dengan index 2
+    const savedTime = localStorage.getItem("musicTime");
+    if(savedTime){
+        music.currentTime = parseFloat(savedTime);
+    }
+
+    music.play().catch(() => {});
+});
+
+// 🔥 Simpan waktu lagu terus menerus
+setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+}, 1000);
+
+function enableSound(){
+    music.muted = false;
+    music.play();
+}
+
+document.addEventListener("click", enableSound, { once: true });
+document.addEventListener("scroll", enableSound, { once: true });
+document.addEventListener("touchstart", enableSound, { once: true });
+
+</script>
+
+</body>
+</html>

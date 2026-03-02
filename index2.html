@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenangan Tasya & Kevin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    font-family:'Poppins', sans-serif;
+    color:#fff;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+/* GIF BACKGROUND */
+.gif-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-image:url("https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3YzJnbjV5ZXAyazl5emN3YzU2YmFxZDh0dGVpZms1NTQzeXc5ZW9sMyZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/fWgfRlEbBShCWvqMnB/giphy.gif");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    z-index:-2;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.55);
+    z-index:-1;
+}
+
+/* PARTICLES */
+.particles{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:0;
+}
+
+.particles span{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:#e8d28a;
+    border-radius:50%;
+    opacity:0.6;
+    animation:float 10s linear infinite;
+}
+
+.particles span:nth-child(1){ left:10%; animation-duration:8s; top:90%; }
+.particles span:nth-child(2){ left:30%; animation-duration:12s; top:95%; }
+.particles span:nth-child(3){ left:50%; animation-duration:10s; top:92%; }
+.particles span:nth-child(4){ left:70%; animation-duration:14s; top:96%; }
+.particles span:nth-child(5){ left:85%; animation-duration:9s; top:94%; }
+
+@keyframes float{
+    from{ transform:translateY(0); opacity:0.7; }
+    to{ transform:translateY(-100vh); opacity:0; }
+}
+
+/* CHAPTER */
+.chapter{
+    position:absolute;
+    width:90%;
+    max-width:800px;
+    text-align:center;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
+    z-index:1;
+}
+
+.chapter.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+h1{
+    font-family:'Playfair Display', serif;
+    font-size:42px;
+    color:#e8d28a;
+    margin-bottom:25px;
+}
+
+p{
+    font-size:18px;
+    line-height:1.8;
+    color:#ddd;
+    margin-bottom:40px;
+}
+
+.btn{
+    padding:12px 35px;
+    background:linear-gradient(45deg,#c9a227,#e8d28a);
+    border:none;
+    cursor:pointer;
+    border-radius:6px;
+    font-weight:500;
+    transition:0.3s;
+    margin:10px;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #c9a227;
+}
+
+.fade-out{
+    opacity:0 !important;
+    transform:translateY(-40px) !important;
+}
+
+@media(max-width:768px){
+    h1{ font-size:28px; }
+    p{ font-size:16px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUTOPLAY MUSIC -->
+<audio id="bgMusic" autoplay loop>
+    <source src="songlove.mp3" type="audio/mpeg">
+</audio>
+
+<div class="gif-bg"></div>
+
+<div class="particles">
+    <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="chapter active" id="chapter1">
+    <h1>Chapter One</h1>
+    <p>
+        Being with him is not just about beautiful days
+        but about how two hearts learn to understand each other 
+        About a simple handhold, yet it feels like home
+        With him, everything feels enough.
+    </p>
+    <button class="btn" onclick="goToChapter2()">Lanjut ke Kenangan 💛</button>
+</div>
+
+<div class="chapter" id="chapter2" style="display:none;">
+    <h1>Chapter Two</h1>
+    <p>
+        Memories together are not just photos and stories
+        but the small moments stored in the heart
+        The first glance, a shy smile 
+        a simple journey that feels extraordinary
+        All those memories become the reason why we want to keep moving forward together.
+    </p>
+    <button class="btn" onclick="backToIndex()">Lanjut Buat Lihat Bucin 💖</button>
+</div>
+
+<script>
+
+const music = document.getElementById("bgMusic");
+
+/* AUTO RESUME MUSIC */
+window.addEventListener("load", function () {
+    const savedTime = localStorage.getItem("musicTime");
+    if (savedTime) {
+        music.currentTime = parseFloat(savedTime);
+    }
+    music.play().catch(()=>{});
+});
+
+setInterval(()=>{
+    localStorage.setItem("musicTime", music.currentTime);
+},1000);
+
+
+/* FUNGSI TIDAK DIUBAH */
+function goToChapter2(){
+    const c1 = document.getElementById("chapter1");
+    const c2 = document.getElementById("chapter2");
+
+    c1.classList.add("fade-out");
+
+    setTimeout(()=>{
+        c1.classList.remove("active");
+        c1.style.display="none";
+
+        c2.style.display="block";
+        setTimeout(()=>{
+            c2.classList.add("active");
+        },100);
+
+    },800);
+}
+
+function backToIndex(){
+    localStorage.setItem("musicTime", music.currentTime);
+
+    document.body.style.opacity = "0";
+    document.body.style.transition = "0.6s";
+
+    setTimeout(()=>{
+        window.location.href = "index3.html"; 
+    },600);
+}
+
+</script>
+
+</body>
+</html>
